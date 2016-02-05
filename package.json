@@ -1,0 +1,21 @@
+{
+  "name": "concurrency-master",
+  "version": "0.0.1",
+  "description": "a promise concurrency manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "promises",
+    "concurrency"
+  ],
+  "author": "davidvgalbraith",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.2.1"
+  }
+}
