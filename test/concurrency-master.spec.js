@@ -3,9 +3,20 @@ var Promise = require('bluebird');
 
 var ConcurrencyMaster = require('../lib/concurrency-master');
 
+var active = 0;
+var maxActive = 0;
 function wait(n) {
     return function() {
-        return Promise.delay(n);
+        active++;
+        if (active > maxActive) {
+            maxActive = active;
+        }
+        return new Promise(function(resolve, reject) {
+            setTimeout(resolve, n);
+        })
+        .then(function() {
+            active--;
+        });
     };
 }
 
@@ -22,6 +33,9 @@ describe('concurrency master', function() {
                 var elapsed = Date.now() - start;
                 expect(elapsed).at.most(2500);
                 expect(elapsed).at.least(1500);
+            })
+            .then(function() {
+                expect(maxActive).equals(5);
             });
     });
 });
