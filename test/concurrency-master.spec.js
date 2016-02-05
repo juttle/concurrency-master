@@ -15,9 +15,9 @@ describe('concurrency master', function() {
         var master = new ConcurrencyMaster(5);
         var start = Date.now();
         for (var i = 0; i < 10; i++) {
-            master.enqueue(wait(1000));
+            master.add(wait(1000));
         }
-        return master.flush()
+        return master.wait()
             .then(function() {
                 var elapsed = Date.now() - start;
                 expect(elapsed).at.most(2500);
