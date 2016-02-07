@@ -16,7 +16,5 @@
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
   },
-  "dependencies": {
-    "bluebird": "^3.2.1"
-  }
+  "dependencies": {}
 }
